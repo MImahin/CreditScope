@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CreditScope: explore credit risk, understand model predictions, and manage your research models.">
+  <title>CreditScope · Credit risk intelligence</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<aside class="sidebar">
+  <a class="brand" href="#overview"><span class="brandmark">C<span></span></span><span>CreditScope<small>RISK INTELLIGENCE</small></span></a>
+  <div class="nav-label">WORKSPACE</div>
+  <nav aria-label="Main navigation">
+    <a href="#overview" data-page="overview"><span class="nav-icon">▦</span>Executive overview</a>
+    <a href="#global" data-page="global"><span class="nav-icon">◉</span>Worldwide statistics</a>
+    <a href="#predict" data-page="predict"><span class="nav-icon">◎</span>Individual prediction</a>
+    <a href="#batch" data-page="batch"><span class="nav-icon">▤</span>Batch CSV check</a>
+    <a href="#eda" data-page="eda"><span class="nav-icon">▥</span>Explore the data</a>
+    <a href="#assistant" data-page="assistant"><span class="nav-icon">✧</span>AI assistant<span class="nav-tag">AI</span></a>
+  </nav>
+  <div class="nav-label">MODEL OPERATIONS</div>
+  <nav aria-label="Model navigation"><a href="#models" data-page="models"><span class="nav-icon">⬡</span>Deploy model<span id="model-count" class="nav-count">0</span></a></nav>
+  <div class="sidebar-bottom"><div class="dataset-icon">◈</div><b>Home Credit research</b><p>From exploration to explanation.</p><div class="sidebar-rule"></div><span class="status-dot"></span> Local research workspace<small>CreditScope · v1.0</small></div>
+</aside>
+<div class="workspace">
+  <header class="topbar"><div><span class="muted">Workspace</span><span class="slash">/</span><span id="breadcrumb">Executive overview</span></div><div class="top-right"><span class="data-badge">Original project data</span><span class="avatar">CS</span></div></header>
+  <main id="main" tabindex="-1"><div class="loading">Loading your CreditScope workspace…</div></main>
+  <footer>CreditScope <span>Research scores support analysis. They are not lending decisions.</span><a href="/docs" target="_blank" rel="noopener">API documentation ↗</a></footer>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<dialog id="plot-dialog"><button class="icon-button dialog-close" aria-label="Close chart">×</button><h2></h2><img alt=""><p></p></dialog>
+<dialog id="metric-dialog" class="metric-dialog"><button class="icon-button metric-dialog-close" aria-label="Close explanation">×</button><div class="eyebrow">METRIC GUIDE</div><h2 id="metric-dialog-title"></h2><p id="metric-dialog-body"></p><p id="metric-dialog-use"></p><a id="metric-dialog-source" target="_blank" rel="noopener" hidden>View official source ↗</a></dialog>
+<dialog id="delete-dialog"><h2>Remove this model?</h2><p>The model will no longer be available for prediction. A recoverable copy stays in the local archive.</p><div class="actions"><button class="secondary" data-close>Keep model</button><button class="danger" id="confirm-delete">Remove model</button></div></dialog>
+</body></html>

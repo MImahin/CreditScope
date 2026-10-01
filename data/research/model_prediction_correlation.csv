@@ -1,0 +1,4 @@
+ModelA,ModelB,PredictionCorrelation
+LightGBM,CatBoost,0.9669287112244188
+LightGBM,XGBoost,0.9661831037075644
+CatBoost,XGBoost,0.9580953357209324

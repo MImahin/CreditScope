@@ -1,0 +1,242 @@
+[
+  {
+    "cell": 0,
+    "text": "# Home Credit Default Risk — Organized End-to-End DA Project\n\nThis notebook consolidates the two supplied project notebooks into one continuous workflow:\n\n1. Load and audit the datasets\n2. Application-level EDA\n3. Bureau feature engineering + EDA\n4. Bureau-balance monthly-history aggregation\n5. Previous-application aggregation + EDA\n6. Installment-payment aggregation + EDA\n7. Audit the **40 added features**\n8. Missing-value handling, duplicate/infinity checks and IQR outlier detection\n9. Numeric preprocessing branch: binary/ordinal/frequency/one-hot encoding\n10. Correlation/redundancy reduction to **107 numeric features**\n11. Native-categorical CatBoost branch with **103 features / 11 categoricals**\n12. Random-Forest feature selection and 40-feature baselines\n13. Logistic Regression, Random Forest, LightGBM, CatBoost and XGBoost\n14. Model and feature summary visualizations\n15. Ensemble experiment and final LightGBM submission\n\n### Grounding and cleanup\nThe formulas, mappings, thresholds, feature counts, model hyperparameters and recorded metrics come from the uploaded notebooks. Repeated debug/recovery cells were removed and the final successful logic was retained.\n\nThe original notebook built parts of the test feature set separately and had a few train/test definition mismatches. In this organized version, the same applicant-level aggregate tables and train-derived bin edges are reused for test data where possible. These consistency fixes are called out in markdown instead of being hidden."
+  },
+  {
+    "cell": 1,
+    "text": "## Confirmed checkpoints from the original notebook runs\n\n- `application_train.csv`: **307,511 × 122**\n- `application_test.csv`: **48,744 × 121**\n- TARGET: **91.93% class 0 / 8.07% class 1**\n- Enriched training table before high-missing removal: **307,511 × 162**\n- Added columns beyond the original 122: **40**\n- Numerical columns removed for >50% missingness: **38**\n- Enriched table: **162 → 124 → 120** after missingness removal and four additional redundant housing variables\n- Numeric path before final redundancy removal: **122 predictors**\n- Final numeric path: **107 predictors**\n- Final train/validation split: **246,008 / 61,503**\n- CatBoost validation path: **103 predictors, 11 native categorical columns**\n- Random-Forest selector: 80% importance = 33 features, 85% = 38, 90% = 45; project baseline used top 40\n\nRecorded validation ROC-AUC:\n\n| Model | ROC-AUC |\n|---|---:|\n| Random Forest — top 40 | 0.733209 |\n| Logistic Regression — top 40 | 0.741752 |\n| Logistic Regression — all 107 | 0.753775 |\n| XGBoost | 0.760887 |\n| LightGBM | 0.764678 |\n| CatBoost | 0.765365 |\n| Best blend: 0.4 LGB + 0.5 CAT + 0.1 XGB | **0.766916** |\n\nThe final submission cell in the source project used **LightGBM only**."
+  },
+  {
+    "cell": 2,
+    "text": "## 1. Imports and project configuration"
+  },
+  {
+    "cell": 5,
+    "text": "## 2. Load the six project data tables"
+  },
+  {
+    "cell": 7,
+    "text": "### Why aggregation is necessary\n`application_train` and `application_test` contain one current application per `SK_ID_CURR`. The historical tables contain many rows per applicant, so they must be aggregated to applicant level before merging. `bureau_balance` has an extra level: monthly rows → bureau credit (`SK_ID_BUREAU`) → applicant (`SK_ID_CURR`)."
+  },
+  {
+    "cell": 8,
+    "text": "## 3. Initial application EDA"
+  },
+  {
+    "cell": 11,
+    "text": "The dataset is heavily imbalanced: **282,686 class-0 applicants (91.93%)** and **24,825 class-1 applicants (8.07%)**. Therefore the project uses ROC-AUC/PR-AUC and class-aware training rather than relying on accuracy alone."
+  },
+  {
+    "cell": 12,
+    "text": "### 3.1 Missingness"
+  },
+  {
+    "cell": 16,
+    "text": "Missingness itself carried signal in some variables. For example, `EXT_SOURCE_1` missing had target mean **0.0852** vs **0.0750** when present, while `COMMONAREA_AVG` missing had **0.0857** vs **0.0691**. The later cleaning step removes numerical columns only after the complete merged feature table is built."
+  },
+  {
+    "cell": 17,
+    "text": "## 4. Application-level engineered features + EDA"
+  },
+  {
+    "cell": 20,
+    "text": "### 4.1 Income"
+  },
+  {
+    "cell": 22,
+    "text": "Original target rates were about **8.21%, 8.59%, 8.68%, 8.06%, 6.52%**. The highest-income quintile had the lowest observed difficulty rate, but the relationship was not perfectly linear and was treated as association rather than causation."
+  },
+  {
+    "cell": 23,
+    "text": "### 4.2 Credit amount and credit-to-income ratio"
+  },
+  {
+    "cell": 25,
+    "text": "The credit relationship was non-linear: the middle credit quintile had the highest observed target rate (**~10.05%**) and the largest-credit group the lowest (**~6.08%**). Credit-to-income was also non-linear: **~7.34%, 8.57%, 8.93%, 8.28%, 7.25%** across quintiles."
+  },
+  {
+    "cell": 26,
+    "text": "### 4.3 Age, gender, income type and education"
+  },
+  {
+    "cell": 28,
+    "text": "Age was one of the clearest relationships: **12.30% → 10.67% → 8.40% → 7.06% → 5.41% → 3.73%** as age increased. Male applicants had **10.14%** observed difficulty vs **7.00%** for female applicants. Lower secondary education had **10.93%**, while Higher education had **5.36%**. Tiny income-type categories were not treated as reliable conclusions; among large groups, Working had **9.59%**, Commercial associate **7.48%**, State servant **5.76%**, Pensioner **5.39%**."
+  },
+  {
+    "cell": 29,
+    "text": "## 5. Bureau: applicant credit-history features"
+  },
+  {
+    "cell": 33,
+    "text": "### 5.1 Bureau EDA"
+  },
+  {
+    "cell": 35,
+    "text": "Key notebook-confirmed findings:\n- No bureau history: **10.12%**, with bureau history: **7.73%**.\n- Any bureau overdue: **16.20%**, no overdue: **7.98%**.\n- Overdue duration itself was non-monotonic, so the project did **not** claim that more overdue days always means higher current risk.\n- Debt burden increased more consistently: No debt **7.27%**, 0–1× income **7.68%**, 1–2× **8.26%**, 2–4× **8.75%**, 4–8× **9.24%**, 8×+ **9.36%**."
+  },
+  {
+    "cell": 36,
+    "text": "## 6. Bureau balance: monthly-history features"
+  },
+  {
+    "cell": 38,
+    "text": "`BUREAU_BALANCE_CREDIT_COUNT` is the number of bureau credits with matched monthly history; the remaining variables summarize history length, overdue months, severe-overdue months and overdue ratios. The organized test path reuses this same aggregate table rather than the original row-level summation that changed the meaning of the test count."
+  },
+  {
+    "cell": 39,
+    "text": "## 7. Previous applications"
+  },
+  {
+    "cell": 41,
+    "text": "Previous status contained predictive information: Approved **7.59%**, Canceled **9.17%**, Refused **12.00%**, Unused offer **8.25%** current target rate. A previously refused application was therefore associated with higher current risk."
+  },
+  {
+    "cell": 43,
+    "text": "## 8. Installment-payment behavior"
+  },
+  {
+    "cell": 45,
+    "text": "The original notebook found **8.43% of installment rows were late**. At applicant level, `LATE_PAYMENT_RATE` and `AVG_PAYMENT_DELAY` had weak/non-monotonic univariate relationships with TARGET, but they were retained because they may contribute through interactions with other variables."
+  },
+  {
+    "cell": 47,
+    "text": "## 9. Audit the 40 added features and their source"
+  },
+  {
+    "cell": 51,
+    "text": "## 10. Cleaning: duplicates, missing values, infinities and outliers"
+  },
+  {
+    "cell": 55,
+    "text": "The source run removed **38 numerical columns**, producing the **162 → 124** training-table reduction. These included the highly missing building/housing variables and `EXT_SOURCE_1`."
+  },
+  {
+    "cell": 57,
+    "text": "Remaining numerical missing values are filled by **median**. In this organized version, test values use the **training medians**, preventing test-distribution leakage."
+  },
+  {
+    "cell": 59,
+    "text": "The IQR step in the original notebook **detected** outliers; it did not globally delete or cap them. The actual explicit domain correction was clipping negative `BUREAU_TOTAL_DEBT` to zero."
+  },
+  {
+    "cell": 62,
+    "text": "## 11. Shared mappings before the two modeling branches"
+  },
+  {
+    "cell": 64,
+    "text": "After the shared binary/ordinal mappings, the pipeline branches:\n\n- **Numeric models:** convert every remaining categorical feature to numbers using frequency encoding, categorical screening and one-hot encoding.\n- **CatBoost:** preserve the remaining 11 categorical columns as strings and let CatBoost handle them natively."
+  },
+  {
+    "cell": 65,
+    "text": "## 12. Numeric-model branch: frequency encoding + categorical screening + one-hot encoding"
+  },
+  {
+    "cell": 68,
+    "text": "Recorded Cramér's V: `NAME_INCOME_TYPE` **0.063845**, `WALLSMATERIAL_MODE` **0.044137**, `EMERGENCYSTATE_MODE` **0.042213**. The implemented project retained those three for one-hot encoding and dropped six others."
+  },
+  {
+    "cell": 72,
+    "text": "The original checkpoint here was **307,511 × 122 train predictors** and **48,744 × 122 test predictors**, with no ID leakage and no missing values."
+  },
+  {
+    "cell": 73,
+    "text": "## 13. Correlation/redundancy reduction: 122 → 107"
+  },
+  {
+    "cell": 75,
+    "text": "The strongest pair was `DAYS_BIRTH` and engineered `AGE_YEARS` with correlation **1.0**. The project manually removed 15 redundant features based on these high-correlation/duplicate-information checks."
+  },
+  {
+    "cell": 77,
+    "text": "## 14. Save the processed 107-feature matrices"
+  },
+  {
+    "cell": 79,
+    "text": "## 15. Random-Forest feature selection"
+  },
+  {
+    "cell": 83,
+    "text": "The recorded selector cutoffs were **33 / 38 / 45** features for 80% / 85% / 90% cumulative importance. The project chose the top 40 for baseline model comparison."
+  },
+  {
+    "cell": 84,
+    "text": "## 16. Baseline models and standardization"
+  },
+  {
+    "cell": 86,
+    "text": "Original Logistic Regression top-40 results: Accuracy **0.68639**, Precision **0.15889**, Recall **0.67190**, F1 **0.25701**, ROC-AUC **0.74175**. Standardization is appropriate here because the linear model is scale-sensitive."
+  },
+  {
+    "cell": 88,
+    "text": "Original Random Forest top-40 results: Accuracy **0.91909**, Precision **0.34286**, Recall **0.00242**, F1 **0.0048**, ROC-AUC **0.73321**. Its high accuracy came mostly from predicting the majority class; the original confusion matrix had only **12 true positives** and **4,953 false negatives**."
+  },
+  {
+    "cell": 90,
+    "text": "Original all-107 Logistic Regression: Precision **0.16343**, Recall **0.68036**, F1 **0.26356**, ROC-AUC **0.75378** — better AUC than the top-40 linear baseline."
+  },
+  {
+    "cell": 91,
+    "text": "## 17. LightGBM — 107-feature numeric path"
+  },
+  {
+    "cell": 94,
+    "text": "Original LightGBM: best iteration **757**, ROC-AUC **0.764678**, PR-AUC **0.254421**. Confusion matrix: `[[41550,14988],[1661,3304]]`."
+  },
+  {
+    "cell": 96,
+    "text": "## 18. CatBoost — preserve the 11 native categorical variables"
+  },
+  {
+    "cell": 99,
+    "text": "Original CatBoost: **103 features**, **11 categorical**, best iteration **706**, ROC-AUC **0.765365**, PR-AUC **0.257852**. It was the best individual recorded model. The source project did not finish a reliable `X_test_cat`, which is why the final submission stayed LightGBM-only."
+  },
+  {
+    "cell": 100,
+    "text": "## 19. XGBoost — 107-feature numeric path"
+  },
+  {
+    "cell": 102,
+    "text": "Original XGBoost: ROC-AUC **0.760887**, PR-AUC **0.249473**. Prediction correlation was **0.96618** with LightGBM and **0.95810** with CatBoost."
+  },
+  {
+    "cell": 103,
+    "text": "## 20. Model summary visualizations"
+  },
+  {
+    "cell": 107,
+    "text": "## 21. Ensemble experiments"
+  },
+  {
+    "cell": 110,
+    "text": "Best recorded blend: **0.4 LightGBM + 0.5 CatBoost + 0.1 XGBoost**, ROC-AUC **0.766916**, PR-AUC **0.259271**. This slightly beat the individual models, but the implemented submission remained LightGBM-only."
+  },
+  {
+    "cell": 111,
+    "text": "## 22. Additional LightGBM checks from the second notebook"
+  },
+  {
+    "cell": 114,
+    "text": "Recorded results: `num_leaves=63` **0.763842**, unweighted LightGBM **0.763984**, both below the baseline balanced LightGBM **0.764678**."
+  },
+  {
+    "cell": 115,
+    "text": "## 23. Final LightGBM submission"
+  },
+  {
+    "cell": 117,
+    "text": "The source notebook's LightGBM-only submission had prediction mean **0.319657**, std **0.193920**, min **0.008469**, max **0.921318**. Because this organized notebook makes some test-side definitions consistent with training, your rerun may produce slightly different test probabilities while keeping the same modeling design."
+  },
+  {
+    "cell": 118,
+    "text": "## 24. Export feature/model summaries"
+  },
+  {
+    "cell": 120,
+    "text": "# Final flow\n\nRaw current application data  \n→ 5 application-level features  \n→ bureau applicant history  \n→ bureau-balance monthly history  \n→ previous-application history  \n→ installment-payment behavior  \n→ **40 added features**  \n→ categorical missing = `Missing`  \n→ remove **38** >50%-missing numerical columns  \n→ median imputation  \n→ IQR **outlier detection**  \n→ remove 4 redundant housing variables  \n→ shared binary/ordinal mappings  \n→ **two branches**:\n\n**Numeric branch:** frequency encoding → Cramér's V / chi-square screening → one-hot encoding → 122 predictors → remove 15 redundant variables → **107 predictors** → LR / RF / LightGBM / XGBoost.\n\n**CatBoost branch:** preserve 11 native categorical variables → rebuild from raw mapped table → **103 predictors** → CatBoost.\n\nRandom-Forest importance was also used to produce a **top-40 baseline subset**.\n\nBest recorded individual model: **CatBoost 0.765365 ROC-AUC**.  \nBest recorded tested blend: **0.766916 ROC-AUC**.  \nActual project submission path: **LightGBM**."
+  },
+  {
+    "cell": 121,
+    "text": "MLP pipline + model saving"
+  }
+]

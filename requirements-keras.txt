@@ -1,0 +1,3 @@
+# Optional: only needed for .h5 / .keras models.
+-r requirements.txt
+tensorflow>=2.20,<3

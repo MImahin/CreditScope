@@ -1,0 +1,2 @@
+Project,Dataset,Applicants,Target0Count,Target1Count,DefaultRate,EngineeredFeatures,HighMissingNumericDropped,NumericFeaturesBeforeCorrelation,NumericFeaturesAfterCorrelation,CatBoostFeatures,CatBoostCategoricalFeatures,IndividualModelsInThisNotebook,BestIndividualModel,BestIndividualROCAUC,BestBlendROCAUC
+CrediFuse,Home Credit Default Risk,307511,282686,24825,0.08072881945686496,40,38,122,107,103,11,3,CatBoost,0.7653651473861905,0.7669156592521772

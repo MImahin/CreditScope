@@ -1,0 +1,41 @@
+Feature,SourceDataset,FeatureFamily,Definition
+INCOME_GROUP,application_train,Application,AMT_INCOME_TOTAL quintile
+CREDIT_GROUP,application_train,Application,AMT_CREDIT quintile
+CREDIT_INCOME_RATIO,application_train,Application,AMT_CREDIT / AMT_INCOME_TOTAL
+AGE_YEARS,application_train,Application,-DAYS_BIRTH / 365
+AGE_GROUP,application_train,Application,AGE_YEARS interval
+BUREAU_CREDIT_COUNT,bureau,Bureau,Number of bureau credits
+BUREAU_ACTIVE_COUNT,bureau,Bureau,Number of active bureau credits
+BUREAU_ACTIVE_RATIO,bureau,Bureau,Active / total bureau credits
+BUREAU_OVERDUE_COUNT,bureau,Bureau,Credits with AMT_CREDIT_SUM_OVERDUE > 0
+BUREAU_OVERDUE_RATIO,bureau,Bureau,Overdue / total bureau credits
+BUREAU_MAX_OVERDUE_DAYS,bureau,Bureau,Maximum CREDIT_DAY_OVERDUE
+HAS_BUREAU_HISTORY,bureau,Bureau,BUREAU_CREDIT_COUNT > 0
+HAS_BUREAU_OVERDUE,bureau,Bureau,BUREAU_OVERDUE_COUNT > 0
+OVERDUE_SEVERITY,bureau,Bureau,Band of maximum overdue days
+BUREAU_CREDIT_GROUP,bureau,Bureau,Band of bureau credit count
+BUREAU_TOTAL_DEBT,bureau,Bureau,Sum AMT_CREDIT_SUM_DEBT; negative aggregate clipped to zero
+BUREAU_DEBT_INCOME_RATIO,bureau + application,Bureau,BUREAU_TOTAL_DEBT / AMT_INCOME_TOTAL
+BUREAU_DEBT_INCOME_GROUP,bureau + application,Bureau,Debt-to-income quintile
+DEBT_INCOME_GROUP,bureau + application,Bureau,Fixed debt-to-income bands
+BUREAU_BALANCE_CREDIT_COUNT,bureau_balance + bureau,Bureau Balance,Bureau credits with monthly history
+BUREAU_AVG_MONTHS_REPORTED,bureau_balance + bureau,Bureau Balance,Average monthly-history length
+BUREAU_TOTAL_OVERDUE_MONTHS,bureau_balance + bureau,Bureau Balance,Total overdue months
+BUREAU_AVG_OVERDUE_RATIO,bureau_balance + bureau,Bureau Balance,Average overdue-month ratio
+BUREAU_TOTAL_SEVERE_OVERDUE_MONTHS,bureau_balance + bureau,Bureau Balance,Total severe-overdue months
+BUREAU_AVG_SEVERE_OVERDUE_RATIO,bureau_balance + bureau,Bureau Balance,Average severe-overdue ratio
+BUREAU_MAX_OVERDUE_RATIO,bureau_balance + bureau,Bureau Balance,Worst credit-level overdue ratio
+HAS_BUREAU_BALANCE_HISTORY,bureau_balance + bureau,Bureau Balance,Whether monthly bureau history exists
+PREVIOUS_APP_COUNT,previous_application,Previous Applications,Number of previous applications
+PREVIOUS_APPROVED_COUNT,previous_application,Previous Applications,Approved previous applications
+PREVIOUS_REFUSED_COUNT,previous_application,Previous Applications,Refused previous applications
+PREVIOUS_CANCELED_COUNT,previous_application,Previous Applications,Canceled previous applications
+PREVIOUS_UNUSED_COUNT,previous_application,Previous Applications,Unused-offer previous applications
+PREVIOUS_AVG_CREDIT,previous_application,Previous Applications,Average previous credit
+PREVIOUS_AVG_APPLICATION,previous_application,Previous Applications,Average previous requested amount
+PREVIOUS_APPROVAL_RATE,previous_application,Previous Applications,Approved / previous applications
+PREVIOUS_REFUSAL_RATE,previous_application,Previous Applications,Refused / previous applications
+LATE_PAYMENT_COUNT,installments_payments,Installments,Count PAYMENT_DELAY > 0
+LATE_PAYMENT_RATE,installments_payments,Installments,Late count / installment count
+AVG_PAYMENT_DELAY,installments_payments,Installments,Mean DAYS_ENTRY_PAYMENT - DAYS_INSTALMENT
+UNDERPAYMENT_RATE,installments_payments,Installments,Share AMT_PAYMENT < AMT_INSTALMENT

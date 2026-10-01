@@ -1,0 +1,15 @@
+StageOrder,Stage,Rows,Columns,Action,ColumnChange
+1,Raw application_train,307511,122,Starting application table,
+2,Application EDA features,307511,127,+5 engineered application features,5.0
+3,Bureau + bureau_balance features,307511,149,Applicant-level credit-history features,22.0
+4,Previous-application features,307511,158,+9 historical application features,9.0
+5,Installment merge / duplicate cleanup,307511,162,Final +40 engineered-feature table,4.0
+6,Drop >50% missing numerical,307511,124,Removed 38 high-missing numeric variables,-38.0
+7,Median imputation,307511,124,Filled remaining numerical missing values,0.0
+8,Remove redundant housing fields,307511,120,Removed 4 AVG/MODE housing variables,-4.0
+9,Categorical processing + one-hot,307511,123,Before removing SK_ID_CURR,3.0
+10,Remove SK_ID_CURR,307511,122,Numeric model matrix before correlation reduction,-1.0
+11,Correlation / redundancy reduction,307511,107,Dropped 15 redundant features,-15.0
+12,Training split,246008,107,80% stratified training split,0.0
+13,Validation split,61503,107,20% stratified validation split,0.0
+14,CatBoost native-categorical path,246008,103,103 features; 11 native categoricals,-4.0

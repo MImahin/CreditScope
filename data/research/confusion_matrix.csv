@@ -1,0 +1,17 @@
+Model,Threshold,Actual,Predicted,ActualLabel,PredictedLabel,Count
+LightGBM,0.5,0,0,No repayment difficulty,Predicted 0,41550
+LightGBM,0.5,0,1,No repayment difficulty,Predicted 1,14988
+LightGBM,0.5,1,0,Repayment difficulty,Predicted 0,1661
+LightGBM,0.5,1,1,Repayment difficulty,Predicted 1,3304
+CatBoost,0.5,0,0,No repayment difficulty,Predicted 0,42271
+CatBoost,0.5,0,1,No repayment difficulty,Predicted 1,14267
+CatBoost,0.5,1,0,Repayment difficulty,Predicted 0,1747
+CatBoost,0.5,1,1,Repayment difficulty,Predicted 1,3218
+XGBoost,0.5,0,0,No repayment difficulty,Predicted 0,44442
+XGBoost,0.5,0,1,No repayment difficulty,Predicted 1,12096
+XGBoost,0.5,1,0,Repayment difficulty,Predicted 0,2039
+XGBoost,0.5,1,1,Repayment difficulty,Predicted 1,2926
+Blend 40% LGB / 50% CAT / 10% XGB,0.5,0,0,No repayment difficulty,Predicted 0,42358
+Blend 40% LGB / 50% CAT / 10% XGB,0.5,0,1,No repayment difficulty,Predicted 1,14180
+Blend 40% LGB / 50% CAT / 10% XGB,0.5,1,0,Repayment difficulty,Predicted 0,1739
+Blend 40% LGB / 50% CAT / 10% XGB,0.5,1,1,Repayment difficulty,Predicted 1,3226

@@ -1,0 +1,16 @@
+Feature,Decision,FeatureCountBefore,FeatureCountAfter
+DAYS_BIRTH,Dropped during correlation / redundancy reduction,122,107
+OBS_60_CNT_SOCIAL_CIRCLE,Dropped during correlation / redundancy reduction,122,107
+AMT_GOODS_PRICE,Dropped during correlation / redundancy reduction,122,107
+PREVIOUS_AVG_APPLICATION,Dropped during correlation / redundancy reduction,122,107
+REGION_RATING_CLIENT_W_CITY,Dropped during correlation / redundancy reduction,122,107
+BUREAU_CREDIT_GROUP,Dropped during correlation / redundancy reduction,122,107
+CNT_FAM_MEMBERS,Dropped during correlation / redundancy reduction,122,107
+REG_REGION_NOT_WORK_REGION,Dropped during correlation / redundancy reduction,122,107
+DEF_60_CNT_SOCIAL_CIRCLE,Dropped during correlation / redundancy reduction,122,107
+REG_CITY_NOT_WORK_CITY,Dropped during correlation / redundancy reduction,122,107
+BUREAU_AVG_MONTHS_REPORTED,Dropped during correlation / redundancy reduction,122,107
+BUREAU_AVG_OVERDUE_RATIO,Dropped during correlation / redundancy reduction,122,107
+PREVIOUS_APPROVED_COUNT,Dropped during correlation / redundancy reduction,122,107
+BUREAU_AVG_SEVERE_OVERDUE_RATIO,Dropped during correlation / redundancy reduction,122,107
+PREVIOUS_UNUSED_COUNT,Dropped during correlation / redundancy reduction,122,107

@@ -1,0 +1,28 @@
+Feature,Strategy,Detail
+NAME_CONTRACT_TYPE,Binary / level mapping,Converted binary/effectively-binary categories to numeric levels
+FLAG_OWN_CAR,Binary / level mapping,Converted binary/effectively-binary categories to numeric levels
+FLAG_OWN_REALTY,Binary / level mapping,Converted binary/effectively-binary categories to numeric levels
+HAS_BUREAU_HISTORY,Binary / level mapping,Converted binary/effectively-binary categories to numeric levels
+HAS_BUREAU_OVERDUE,Binary / level mapping,Converted binary/effectively-binary categories to numeric levels
+HAS_BUREAU_BALANCE_HISTORY,Binary / level mapping,Converted binary/effectively-binary categories to numeric levels
+CODE_GENDER,Binary / level mapping,Converted binary/effectively-binary categories to numeric levels
+NAME_EDUCATION_TYPE,Ordinal encoding,Ordered category -> integer level
+OVERDUE_SEVERITY,Ordinal encoding,Ordered category -> integer level
+DEBT_INCOME_GROUP,Ordinal encoding,Ordered category -> integer level
+BUREAU_CREDIT_GROUP,Ordinal encoding,Ordered category -> integer level
+INCOME_GROUP,Interval/category codes,Ordered interval categories -> numeric codes for numeric models
+CREDIT_GROUP,Interval/category codes,Ordered interval categories -> numeric codes for numeric models
+AGE_GROUP,Interval/category codes,Ordered interval categories -> numeric codes for numeric models
+BUREAU_DEBT_INCOME_GROUP,Interval/category codes,Ordered interval categories -> numeric codes for numeric models
+OCCUPATION_TYPE,Frequency encoding,Category replaced by training-category frequency
+ORGANIZATION_TYPE,Frequency encoding,Category replaced by training-category frequency
+NAME_INCOME_TYPE,One-hot encoding,pd.get_dummies(drop_first=True)
+WALLSMATERIAL_MODE,One-hot encoding,pd.get_dummies(drop_first=True)
+EMERGENCYSTATE_MODE,One-hot encoding,pd.get_dummies(drop_first=True)
+NAME_TYPE_SUITE,Dropped after association analysis,Removed from numeric branch after chi-square / Cramer's V review
+NAME_FAMILY_STATUS,Dropped after association analysis,Removed from numeric branch after chi-square / Cramer's V review
+NAME_HOUSING_TYPE,Dropped after association analysis,Removed from numeric branch after chi-square / Cramer's V review
+WEEKDAY_APPR_PROCESS_START,Dropped after association analysis,Removed from numeric branch after chi-square / Cramer's V review
+FONDKAPREMONT_MODE,Dropped after association analysis,Removed from numeric branch after chi-square / Cramer's V review
+HOUSETYPE_MODE,Dropped after association analysis,Removed from numeric branch after chi-square / Cramer's V review
+NAME_INCOME_TYPE,Rare-category grouping,"Unemployed, Student, Businessman, Maternity leave -> Other"

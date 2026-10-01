@@ -1,0 +1,84 @@
+Page,Analysis,Group,SortOrder,Applicants,Defaults,DefaultRate,DefaultPct
+Applicant & Financial Profile,Default rate by income quintile,Q1 Lowest,1,63671,5225,0.08206247742300263,8.206247742300263
+Applicant & Financial Profile,Default rate by income quintile,Q2,2,85756,7365,0.0858832035076263,8.58832035076263
+Applicant & Financial Profile,Default rate by income quintile,Q3,3,35453,3079,0.0868473753984148,8.68473753984148
+Applicant & Financial Profile,Default rate by income quintile,Q4,4,75513,6084,0.08056890866473322,8.056890866473323
+Applicant & Financial Profile,Default rate by income quintile,Q5 Highest,5,47118,3072,0.06519801349802623,6.5198013498026235
+Applicant & Financial Profile,Default rate by credit quintile,Q1 Lowest,1,64925,4699,0.07237581825182904,7.237581825182904
+Applicant & Financial Profile,Default rate by credit quintile,Q2,2,58098,5329,0.09172432785982305,9.172432785982306
+Applicant & Financial Profile,Default rate by credit quintile,Q3,3,61552,6189,0.10054912919157785,10.054912919157784
+Applicant & Financial Profile,Default rate by credit quintile,Q4,4,64024,5029,0.07854866924903162,7.8548669249031615
+Applicant & Financial Profile,Default rate by credit quintile,Q5 Highest,5,58912,3579,0.06075162954915807,6.075162954915807
+Applicant & Financial Profile,Default rate by credit-to-income quintile,Q1 Lowest,1,61539,4514,0.073351858171241,7.3351858171241
+Applicant & Financial Profile,Default rate by credit-to-income quintile,Q2,2,61502,5269,0.0856720106663198,8.56720106663198
+Applicant & Financial Profile,Default rate by credit-to-income quintile,Q3,3,61466,5486,0.0892525949305307,8.925259493053069
+Applicant & Financial Profile,Default rate by credit-to-income quintile,Q4,4,61505,5095,0.08283879359401675,8.283879359401675
+Applicant & Financial Profile,Default rate by credit-to-income quintile,Q5 Highest,5,61499,4461,0.07253776484170474,7.253776484170474
+Applicant & Financial Profile,Default rate by income type,Businessman,1,10,0,0.0,0.0
+Applicant & Financial Profile,Default rate by income type,Commercial associate,2,71617,5360,0.07484256531270508,7.484256531270509
+Applicant & Financial Profile,Default rate by income type,Maternity leave,3,5,2,0.4,40.0
+Applicant & Financial Profile,Default rate by income type,Pensioner,4,55362,2982,0.053863660994906255,5.386366099490625
+Applicant & Financial Profile,Default rate by income type,State servant,5,21703,1249,0.05754964751416855,5.754964751416855
+Applicant & Financial Profile,Default rate by income type,Student,6,18,0,0.0,0.0
+Applicant & Financial Profile,Default rate by income type,Unemployed,7,22,8,0.36363636363636365,36.36363636363637
+Applicant & Financial Profile,Default rate by income type,Working,8,158774,15224,0.09588471664126369,9.588471664126368
+Applicant & Financial Profile,Default rate by age group,"(18, 25]",1,12159,1496,0.12303643391726293,12.303643391726293
+Applicant & Financial Profile,Default rate by age group,"(25, 35]",2,72302,7717,0.10673287046001494,10.673287046001494
+Applicant & Financial Profile,Default rate by age group,"(35, 45]",3,84274,7083,0.08404727436694591,8.404727436694591
+Applicant & Financial Profile,Default rate by age group,"(45, 55]",4,70077,4946,0.07057950540120153,7.057950540120153
+Applicant & Financial Profile,Default rate by age group,"(55, 65]",5,60596,3281,0.054145488151033073,5.414548815103307
+Applicant & Financial Profile,Default rate by age group,"(65, 100]",6,8103,302,0.037270146859187954,3.7270146859187956
+Applicant & Financial Profile,Default rate by gender,F,1,202448,14170,0.06999328222555916,6.999328222555916
+Applicant & Financial Profile,Default rate by gender,M,2,105059,10655,0.1014192025433328,10.141920254333279
+Applicant & Financial Profile,Default rate by gender,XNA,3,4,0,0.0,0.0
+Applicant & Financial Profile,Default rate by education,Academic degree,1,164,3,0.018292682926829267,1.8292682926829267
+Applicant & Financial Profile,Default rate by education,Higher education,2,74863,4009,0.05355115344028425,5.355115344028425
+Applicant & Financial Profile,Default rate by education,Incomplete higher,3,10277,872,0.08484966429891992,8.484966429891992
+Applicant & Financial Profile,Default rate by education,Lower secondary,4,3816,417,0.10927672955974843,10.927672955974844
+Applicant & Financial Profile,Default rate by education,Secondary / secondary special,5,218391,19524,0.08939928843221562,8.939928843221562
+Credit Bureau Intelligence,Default rate by bureau-history availability,Has bureau history,1,263491,20368,0.07730055296006315,7.730055296006315
+Credit Bureau Intelligence,Default rate by bureau-history availability,No bureau history,2,44020,4457,0.10124943207632894,10.124943207632894
+Credit Bureau Intelligence,Default rate by previous bureau overdue,Has previous overdue,1,3334,540,0.16196760647870426,16.196760647870427
+Credit Bureau Intelligence,Default rate by previous bureau overdue,No previous overdue,2,304177,24285,0.07983838357272247,7.983838357272247
+Credit Bureau Intelligence,Default rate by maximum overdue severity,180+ days,1,859,88,0.10244470314318975,10.244470314318974
+Credit Bureau Intelligence,Default rate by maximum overdue severity,1–30 days,2,1523,280,0.18384766907419567,18.384766907419568
+Credit Bureau Intelligence,Default rate by maximum overdue severity,31–90 days,3,790,137,0.17341772151898735,17.341772151898734
+Credit Bureau Intelligence,Default rate by maximum overdue severity,91–180 days,4,225,35,0.15555555555555556,15.555555555555555
+Credit Bureau Intelligence,Default rate by maximum overdue severity,No overdue,5,304114,24285,0.07985492282499326,7.985492282499326
+Credit Bureau Intelligence,Default rate by bureau credit-count group,11–20 credits,1,29808,2365,0.07934111647879764,7.934111647879765
+Credit Bureau Intelligence,Default rate by bureau credit-count group,1–2 credits,2,71707,5882,0.08202825386642866,8.202825386642866
+Credit Bureau Intelligence,Default rate by bureau credit-count group,20+ credits,3,2469,276,0.1117861482381531,11.178614823815309
+Credit Bureau Intelligence,Default rate by bureau credit-count group,3–5 credits,4,86883,6430,0.0740075734033125,7.40075734033125
+Credit Bureau Intelligence,Default rate by bureau credit-count group,6–10 credits,5,72624,5415,0.07456212822207535,7.456212822207535
+Credit Bureau Intelligence,Default rate by bureau credit-count group,Missing,6,44020,4457,0.10124943207632894,10.124943207632894
+Credit Bureau Intelligence,Default rate by bureau debt-to-income group,0–1x income,1,47216,3625,0.07677482209420536,7.6774822094205355
+Credit Bureau Intelligence,Default rate by bureau debt-to-income group,1–2x income,2,30699,2536,0.08260855402456106,8.260855402456107
+Credit Bureau Intelligence,Default rate by bureau debt-to-income group,2–4x income,3,37649,3296,0.08754548593588143,8.754548593588144
+Credit Bureau Intelligence,Default rate by bureau debt-to-income group,4–8x income,4,37170,3436,0.09244013989776702,9.244013989776702
+Credit Bureau Intelligence,Default rate by bureau debt-to-income group,8x+ income,5,32412,3034,0.09360730593607305,9.360730593607306
+Credit Bureau Intelligence,Default rate by bureau debt-to-income group,No debt,6,122365,8898,0.07271687165447636,7.271687165447636
+Previous Loans & Payment Behavior,Default rate by previous-application count,0–1,1,68987,5380,0.07798570745212866,7.798570745212865
+Previous Loans & Payment Behavior,Default rate by previous-application count,2,2,45799,3599,0.07858250180134937,7.858250180134937
+Previous Loans & Payment Behavior,Default rate by previous-application count,3–4,3,72936,5616,0.0769990128331688,7.699901283316881
+Previous Loans & Payment Behavior,Default rate by previous-application count,5–7,4,64095,5122,0.07991262969030345,7.991262969030346
+Previous Loans & Payment Behavior,Default rate by previous-application count,8+,5,55694,5108,0.09171544511078393,9.171544511078393
+Previous Loans & Payment Behavior,Default rate by late-payment-rate group,Missing,1,152512,10242,0.06715537138061267,6.715537138061267
+Previous Loans & Payment Behavior,Default rate by late-payment-rate group,Q1,2,31118,2089,0.06713156372517513,6.713156372517513
+Previous Loans & Payment Behavior,Default rate by late-payment-rate group,Q2,3,30928,2582,0.08348422141748578,8.348422141748578
+Previous Loans & Payment Behavior,Default rate by late-payment-rate group,Q3,4,31311,2973,0.09495065631886558,9.495065631886558
+Previous Loans & Payment Behavior,Default rate by late-payment-rate group,Q4,5,31152,3132,0.10053929121725731,10.053929121725732
+Previous Loans & Payment Behavior,Default rate by late-payment-rate group,Q5,6,30490,3807,0.1248606100360774,12.486061003607741
+Previous Loans & Payment Behavior,Default rate by average-payment-delay group,Missing,1,15876,950,0.05983875031494079,5.98387503149408
+Previous Loans & Payment Behavior,Default rate by average-payment-delay group,Q1,2,58537,4075,0.0696140902335275,6.961409023352751
+Previous Loans & Payment Behavior,Default rate by average-payment-delay group,Q2,3,58119,4216,0.07254082141812489,7.254082141812488
+Previous Loans & Payment Behavior,Default rate by average-payment-delay group,Q3,4,59175,4732,0.07996620194338826,7.996620194338826
+Previous Loans & Payment Behavior,Default rate by average-payment-delay group,Q4,5,57477,4972,0.08650416688414496,8.650416688414495
+Previous Loans & Payment Behavior,Default rate by average-payment-delay group,Q5,6,58327,5880,0.10081094518833474,10.081094518833474
+Previous Loans & Payment Behavior,Default rate by underpayment band,High,1,59292,6684,0.11273021655535317,11.273021655535317
+Previous Loans & Payment Behavior,Default rate by underpayment band,Low,2,174193,12328,0.07077207465282762,7.077207465282761
+Previous Loans & Payment Behavior,Default rate by underpayment band,Medium,3,58158,4864,0.08363423776608549,8.363423776608549
+Previous Loans & Payment Behavior,Default rate by underpayment band,nan,4,15868,949,0.05980589866397782,5.980589866397782
+Previous Loans & Payment Behavior,Current default rate by previous application status,Approved,1,886099,67243,0.07588655443691958,7.588655443691958
+Previous Loans & Payment Behavior,Current default rate by previous application status,Canceled,2,259441,23800,0.09173569327901142,9.173569327901141
+Previous Loans & Payment Behavior,Current default rate by previous application status,Refused,3,245390,29438,0.11996413871795916,11.996413871795916
+Previous Loans & Payment Behavior,Current default rate by previous application status,Unused offer,4,22771,1879,0.0825172368363269,8.25172368363269

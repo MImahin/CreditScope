@@ -1,0 +1,407 @@
+[
+  {
+    "id": "cell-10-0.png",
+    "title": "TARGET class distribution",
+    "section": "3. Initial application EDA",
+    "cell": 10,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-10-0.png"
+  },
+  {
+    "id": "cell-14-0.png",
+    "title": "Top 25 missing columns — application_train",
+    "section": "3.1 Missingness",
+    "cell": 14,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-14-0.png"
+  },
+  {
+    "id": "cell-21-1.png",
+    "title": "Default rate across income quintiles",
+    "section": "4.1 Income",
+    "cell": 21,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-21-1.png"
+  },
+  {
+    "id": "cell-24-2.png",
+    "title": "Default rate across credit-amount quintiles",
+    "section": "4.2 Credit amount and credit-to-income ratio",
+    "cell": 24,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-24-2.png"
+  },
+  {
+    "id": "cell-24-3.png",
+    "title": "Default rate across credit-to-income quintiles",
+    "section": "4.2 Credit amount and credit-to-income ratio",
+    "cell": 24,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-24-3.png"
+  },
+  {
+    "id": "cell-27-4.png",
+    "title": "Default rate by age group",
+    "section": "4.3 Age, gender, income type and education",
+    "cell": 27,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-27-4.png"
+  },
+  {
+    "id": "cell-34-1.png",
+    "title": "Default rate by bureau history",
+    "section": "5.1 Bureau EDA",
+    "cell": 34,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-34-1.png"
+  },
+  {
+    "id": "cell-34-3.png",
+    "title": "Default rate by previous bureau overdue",
+    "section": "5.1 Bureau EDA",
+    "cell": 34,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-34-3.png"
+  },
+  {
+    "id": "cell-34-5.png",
+    "title": "Default rate by overdue severity",
+    "section": "5.1 Bureau EDA",
+    "cell": 34,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-34-5.png"
+  },
+  {
+    "id": "cell-34-7.png",
+    "title": "Default rate by bureau credit count",
+    "section": "5.1 Bureau EDA",
+    "cell": 34,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-34-7.png"
+  },
+  {
+    "id": "cell-34-9.png",
+    "title": "Default rate by debt-to-income group",
+    "section": "5.1 Bureau EDA",
+    "cell": 34,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-34-9.png"
+  },
+  {
+    "id": "cell-40-1.png",
+    "title": "Current repayment difficulty by previous application status",
+    "section": "7. Previous applications",
+    "cell": 40,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-40-1.png"
+  },
+  {
+    "id": "cell-50-0.png",
+    "title": "Engineered features by source",
+    "section": "9. Audit the 40 added features and their source",
+    "cell": 50,
+    "category": "Exploratory analysis",
+    "group": "Exploratory analysis",
+    "url": "/assets/eda/cell-50-0.png"
+  },
+  {
+    "id": "cell-81-0.png",
+    "title": "Random Forest importance — top 30",
+    "section": "15. Random-Forest feature selection",
+    "cell": 81,
+    "category": "Model evaluation",
+    "group": "Feature importance",
+    "url": "/assets/eda/cell-81-0.png"
+  },
+  {
+    "id": "cell-81-1.png",
+    "title": "Cumulative feature importance",
+    "section": "15. Random-Forest feature selection",
+    "cell": 81,
+    "category": "Model evaluation",
+    "group": "Feature importance",
+    "url": "/assets/eda/cell-81-1.png"
+  },
+  {
+    "id": "cell-87-1.png",
+    "title": "Random Forest top-40 confusion matrix",
+    "section": "16. Baseline models and standardization",
+    "cell": 87,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-87-1.png"
+  },
+  {
+    "id": "cell-95-1.png",
+    "title": "LightGBM feature importance — top 30",
+    "section": "17. LightGBM — 107-feature numeric path",
+    "cell": 95,
+    "category": "Model evaluation",
+    "group": "Feature importance",
+    "url": "/assets/eda/cell-95-1.png"
+  },
+  {
+    "id": "cell-105-0.png",
+    "title": "Validation ROC-AUC by model",
+    "section": "20. Model summary visualizations",
+    "cell": 105,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-105-0.png"
+  },
+  {
+    "id": "cell-106-0.png",
+    "title": "Validation ROC curves",
+    "section": "20. Model summary visualizations",
+    "cell": 106,
+    "category": "Model evaluation",
+    "group": "Curves",
+    "url": "/assets/eda/cell-106-0.png"
+  },
+  {
+    "id": "cell-106-1.png",
+    "title": "Validation precision-recall curves",
+    "section": "20. Model summary visualizations",
+    "cell": 106,
+    "category": "Model evaluation",
+    "group": "Curves",
+    "url": "/assets/eda/cell-106-1.png"
+  },
+  {
+    "id": "cell-125-1.png",
+    "title": "Logistic Regression + SMOTE",
+    "section": "Final flow",
+    "cell": 125,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-125-1.png"
+  },
+  {
+    "id": "cell-127-2.png",
+    "title": "ROC-AUC comparison of all models",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-2.png"
+  },
+  {
+    "id": "cell-127-3.png",
+    "title": "PR-AUC comparison of all models",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-3.png"
+  },
+  {
+    "id": "cell-127-4.png",
+    "title": "Precision comparison of all models",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-4.png"
+  },
+  {
+    "id": "cell-127-5.png",
+    "title": "Recall comparison of all models",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-5.png"
+  },
+  {
+    "id": "cell-127-6.png",
+    "title": "F1 score comparison of all models",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-6.png"
+  },
+  {
+    "id": "cell-127-7.png",
+    "title": "Accuracy comparison of all models",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-7.png"
+  },
+  {
+    "id": "cell-127-8.png",
+    "title": "ROC curves - all trained models",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Curves",
+    "url": "/assets/eda/cell-127-8.png"
+  },
+  {
+    "id": "cell-127-9.png",
+    "title": "Precision-recall curves - all trained models",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Curves",
+    "url": "/assets/eda/cell-127-9.png"
+  },
+  {
+    "id": "cell-127-10.png",
+    "title": "ROC-AUC before vs after SMOTE",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-10.png"
+  },
+  {
+    "id": "cell-127-11.png",
+    "title": "PR-AUC before vs after SMOTE",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-11.png"
+  },
+  {
+    "id": "cell-127-12.png",
+    "title": "F1 score before vs after SMOTE",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-12.png"
+  },
+  {
+    "id": "cell-127-13.png",
+    "title": "Precision before vs after SMOTE",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-13.png"
+  },
+  {
+    "id": "cell-127-14.png",
+    "title": "Recall before vs after SMOTE",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Comparisons",
+    "url": "/assets/eda/cell-127-14.png"
+  },
+  {
+    "id": "cell-127-15.png",
+    "title": "Logistic Regression (Top 40) confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-15.png"
+  },
+  {
+    "id": "cell-127-16.png",
+    "title": "Random Forest (Top 40) confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-16.png"
+  },
+  {
+    "id": "cell-127-17.png",
+    "title": "Logistic Regression (107) confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-17.png"
+  },
+  {
+    "id": "cell-127-18.png",
+    "title": "LightGBM confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-18.png"
+  },
+  {
+    "id": "cell-127-19.png",
+    "title": "CatBoost confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-19.png"
+  },
+  {
+    "id": "cell-127-20.png",
+    "title": "XGBoost confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-20.png"
+  },
+  {
+    "id": "cell-127-21.png",
+    "title": "MLP confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-21.png"
+  },
+  {
+    "id": "cell-127-22.png",
+    "title": "DCN confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-22.png"
+  },
+  {
+    "id": "cell-127-23.png",
+    "title": "Logistic Regression + SMOTE confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-23.png"
+  },
+  {
+    "id": "cell-127-24.png",
+    "title": "MLP + SMOTE confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-24.png"
+  },
+  {
+    "id": "cell-127-25.png",
+    "title": "DCN + SMOTE confusion matrix",
+    "section": "Complete model performance summary",
+    "cell": 127,
+    "category": "Model evaluation",
+    "group": "Confusion matrices",
+    "url": "/assets/eda/cell-127-25.png"
+  }
+]

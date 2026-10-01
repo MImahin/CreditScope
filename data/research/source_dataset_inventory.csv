@@ -1,0 +1,11 @@
+Dataset,Rows,Columns,ProjectUsage,Purpose
+application_test.csv,48744,121,Used,Kaggle test application table
+application_train.csv,307511,122,Used,Primary training application table
+bureau.csv,1716428,17,Used,External bureau credit history
+bureau_balance.csv,27299925,3,Used,Monthly bureau-credit status history
+credit_card_balance.csv,3840312,23,Inventoried only,Not used in implemented +40 merge
+HomeCredit_columns_description.csv,219,5,Reference,Column descriptions
+installments_payments.csv,13605401,8,Used,Installment payment behavior
+POS_CASH_balance.csv,10001358,8,Inventoried only,Not used in implemented +40 merge
+previous_application.csv,1670214,37,Used,Previous Home Credit applications
+sample_submission.csv,48744,2,Used,Submission structure

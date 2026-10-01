@@ -1,0 +1,23 @@
+PowerBITable,File,Description,RecommendedUse
+Applicants,fact_applicants.csv,Main applicant-level interactive fact table,All portfolio / EDA pages
+EDABaseline,eda_baseline_summary.csv,Original unfiltered grouped EDA,Baseline EDA comparisons
+Missingness,missingness_analysis.csv,Missing counts/rates + TARGET association,Data & Feature Engineering
+FeatureLineage,engineered_feature_lineage.csv,The 40 engineered features,Data & Feature Engineering
+PreprocessingStages,preprocessing_stages.csv,Pipeline stage counts,Data & Feature Engineering
+EncodingStrategy,encoding_strategy.csv,Encoding decisions,Data & Feature Engineering
+CategoricalAssociation,categorical_association.csv,Chi-square + Cramer's V,Feature Intelligence
+Outliers,outlier_summary.csv,IQR audit,Data & Feature Engineering
+CorrelationPairs,correlation_pairs.csv,Correlation pair strengths,Feature Intelligence
+RemovedFeatures,correlation_removed_features.csv,15 dropped redundant features,Feature Intelligence
+ModelMetrics,model_metrics.csv,Consistent model comparison,Model Intelligence
+ValidationPredictions,validation_predictions.csv,Applicant-level validation scores,Model drillthrough / score distribution
+TestLightGBMScores,test_lightgbm_scores.csv,LightGBM test scores,Optional test score page
+ThresholdMetrics,threshold_metrics.csv,Metrics at thresholds 0.05–0.95,Interactive threshold analysis
+ConfusionMatrix,confusion_matrix.csv,Threshold 0.50 confusion matrices,Model Intelligence
+ROCCurve,roc_curve.csv,ROC coordinates,Model Intelligence
+PRCurve,pr_curve.csv,Precision-recall coordinates,Model Intelligence
+ModelFeatureImportance,model_feature_importance.csv,LGB/XGB/CAT feature rankings,Feature Intelligence
+EnsembleResults,ensemble_results.csv,Blend weights + metrics,Model Intelligence
+ModelCorrelation,model_prediction_correlation.csv,Prediction correlation,Model Intelligence
+ProjectSummary,project_summary.csv,Static project facts,Executive Overview
+EDAInsights,eda_insights.csv,Narrative findings,Insight cards / tooltip text

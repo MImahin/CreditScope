@@ -1,0 +1,13 @@
+Page,Topic,Insight,InterpretationNote
+Applicant & Financial Profile,Age,Younger applicants showed substantially higher observed repayment difficulty; the age relationship decreased almost monotonically.,"Association, not causation"
+Applicant & Financial Profile,Income,"The highest income quintile had the lowest observed difficulty rate, while the relationship was not perfectly linear.","Association, not causation"
+Applicant & Financial Profile,Credit amount,Medium credit groups were riskier than both extremes; credit amount alone was not enough to explain risk.,Non-linear relationship
+Applicant & Financial Profile,Credit / income,Credit-to-income quintiles showed a non-linear relationship with TARGET.,Non-linear relationship
+Credit Bureau Intelligence,Bureau history,Applicants without bureau history had a higher observed repayment-difficulty rate than applicants with bureau history.,Thin-file segment signal
+Credit Bureau Intelligence,Previous overdue,Applicants with at least one overdue bureau credit had roughly twice the observed repayment-difficulty rate.,Strong historical signal
+Credit Bureau Intelligence,Overdue severity,"Any overdue history was informative, but longer overdue duration did not create a monotonic increase in current TARGET rate.",Do not claim monotonic severity
+Credit Bureau Intelligence,Debt burden,Observed difficulty generally increased as bureau debt became larger relative to applicant income.,Strong burden signal
+Previous Loans & Payment Behavior,Previous application status,Previously refused applications were associated with a higher current repayment-difficulty rate than approved applications.,Historical application signal
+Previous Loans & Payment Behavior,Late payment rate,Late-payment rate alone was weak and non-monotonic in univariate EDA.,Weak standalone signal
+Previous Loans & Payment Behavior,Average payment delay,Average payment delay was weak/non-monotonic on its own.,May still contribute through interactions
+Feature Intelligence,Model interactions,A feature can be weak in univariate EDA yet still receive model importance because tree models capture interactions.,EDA importance and model importance are not identical

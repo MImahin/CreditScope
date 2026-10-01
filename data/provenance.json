@@ -1,0 +1,14 @@
+{
+  "notebook": "DA_Project_Organized_End_to_End.ipynb",
+  "dataset": "Home Credit Default Risk",
+  "applicants": 307511,
+  "defaults": 24825,
+  "feature_count": 107,
+  "charts": 45,
+  "dashboard_source": "Power BI fact_applicants.csv (full dataset)",
+  "notes": [
+    "TARGET means recorded repayment difficulty in the source dataset.",
+    "SMOTE models were evaluated in the notebook but their weights were not found.",
+    "The notebook DCN + SMOTE experiment is a deeper MLP, distinct from the saved Deep & Cross Network."
+  ]
+}

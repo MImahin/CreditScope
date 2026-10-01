@@ -1,0 +1,49 @@
+{
+  "snapshot_date": "2026-10-01",
+  "world_bank_last_updated": "2026-07-13",
+  "default_country": "BGD",
+  "countries": {
+    "BGD": {"name":"Bangladesh","short_name":"Bangladesh","map_x":72,"map_y":50,"npl":{"value":18.9608,"year":2024,"previous":9.5691,"previous_year":2023},"gdp_growth":{"value":3.4899,"year":2025},"inflation":{"value":8.7688,"year":2025},"unemployment":{"value":3.778,"year":2025},"lending_rate":{"value":8.6233,"year":2025},"bank_capital":{"value":2.2941,"year":2024},"private_credit":{"value":34.5043,"year":2025}},
+    "IND": {"name":"India","short_name":"India","map_x":68,"map_y":51,"npl":{"value":2.0628,"year":2025,"previous":2.5004,"previous_year":2024},"gdp_growth":{"value":7.5667,"year":2025},"inflation":{"value":2.3988,"year":2025},"unemployment":{"value":4.219,"year":2025},"lending_rate":{"value":8.5671,"year":2022},"bank_capital":{"value":8.5179,"year":2025},"private_credit":{"value":44.0251,"year":2025}},
+    "PAK": {"name":"Pakistan","short_name":"Pakistan","map_x":64,"map_y":47,"npl":{"value":5.3604,"year":2025,"previous":5.7486,"previous_year":2024},"gdp_growth":{"value":3.6984,"year":2025},"inflation":{"value":3.5456,"year":2025},"unemployment":{"value":5.42,"year":2025},"lending_rate":{"value":8.666,"year":2021},"bank_capital":{"value":5.2078,"year":2025},"private_credit":{"value":10.7268,"year":2025}},
+    "CHN": {"name":"China","short_name":"China","map_x":77,"map_y":40,"npl":{"value":1.5046,"year":2024,"previous":1.5927,"previous_year":2023},"gdp_growth":{"value":4.9599,"year":2025},"inflation":{"value":0.0596,"year":2025},"unemployment":{"value":4.615,"year":2025},"lending_rate":{"value":4.35,"year":2024},"bank_capital":{"value":7.7535,"year":2021},"private_credit":{"value":194.3125,"year":2024}},
+    "JPN": {"name":"Japan","short_name":"Japan","map_x":88,"map_y":41,"npl":{"value":1.234,"year":2022,"previous":1.2275,"previous_year":2021},"gdp_growth":{"value":1.1931,"year":2025},"inflation":{"value":3.1725,"year":2025},"unemployment":{"value":2.451,"year":2025},"lending_rate":{"value":null,"year":null},"bank_capital":{"value":4.0677,"year":2022},"private_credit":{"value":187.4066,"year":2025}},
+    "USA": {"name":"United States","short_name":"USA","map_x":22,"map_y":38,"npl":{"value":0.9603,"year":2025,"previous":0.9729,"previous_year":2024},"gdp_growth":{"value":2.1614,"year":2025},"inflation":{"value":2.9495,"year":2024},"unemployment":{"value":4.198,"year":2025},"lending_rate":{"value":3.25,"year":2021},"bank_capital":{"value":9.174,"year":2025},"private_credit":{"value":201.2661,"year":2025}},
+    "GBR": {"name":"United Kingdom","short_name":"UK","map_x":47,"map_y":29,"npl":{"value":0.9475,"year":2025,"previous":1.0158,"previous_year":2024},"gdp_growth":{"value":1.3884,"year":2025},"inflation":{"value":3.8831,"year":2025},"unemployment":{"value":4.746,"year":2025},"lending_rate":{"value":null,"year":null},"bank_capital":{"value":5.6202,"year":2025},"private_credit":{"value":112.372,"year":2024}},
+    "DEU": {"name":"Germany","short_name":"Germany","map_x":50,"map_y":31,"npl":{"value":1.8906,"year":2025,"previous":1.7716,"previous_year":2024},"gdp_growth":{"value":0.2396,"year":2025},"inflation":{"value":2.1718,"year":2025},"unemployment":{"value":3.711,"year":2025},"lending_rate":{"value":null,"year":null},"bank_capital":{"value":7.4889,"year":2025},"private_credit":{"value":77.2535,"year":2023}},
+    "FRA": {"name":"France","short_name":"France","map_x":48,"map_y":34,"npl":{"value":2.0873,"year":2024,"previous":2.0612,"previous_year":2023},"gdp_growth":{"value":0.8409,"year":2025},"inflation":{"value":0.9438,"year":2025},"unemployment":{"value":7.542,"year":2025},"lending_rate":{"value":null,"year":null},"bank_capital":{"value":5.5551,"year":2024},"private_credit":{"value":107.5827,"year":2024}},
+    "CAN": {"name":"Canada","short_name":"Canada","map_x":19,"map_y":24,"npl":{"value":0.7064,"year":2025,"previous":0.5687,"previous_year":2024},"gdp_growth":{"value":1.7427,"year":2025},"inflation":{"value":2.0723,"year":2025},"unemployment":{"value":6.907,"year":2025},"lending_rate":{"value":null,"year":null},"bank_capital":{"value":4.8585,"year":2025},"private_credit":{"value":null,"year":null}},
+    "AUS": {"name":"Australia","short_name":"Australia","map_x":84,"map_y":72,"npl":{"value":1.0018,"year":2025,"previous":0.9949,"previous_year":2024},"gdp_growth":{"value":1.3504,"year":2025},"inflation":{"value":2.874,"year":2025},"unemployment":{"value":4.09,"year":2025},"lending_rate":{"value":null,"year":null},"bank_capital":{"value":5.5709,"year":2025},"private_credit":{"value":133.7926,"year":2025}},
+    "BRA": {"name":"Brazil","short_name":"Brazil","map_x":35,"map_y":65,"npl":{"value":3.8776,"year":2025,"previous":2.7154,"previous_year":2024},"gdp_growth":{"value":2.2857,"year":2025},"inflation":{"value":5.0168,"year":2025},"unemployment":{"value":5.97,"year":2025},"lending_rate":{"value":45.3333,"year":2025},"bank_capital":{"value":8.3463,"year":2025},"private_credit":{"value":75.103,"year":2025}},
+    "ZAF": {"name":"South Africa","short_name":"South Africa","map_x":53,"map_y":74,"npl":{"value":4.5356,"year":2024,"previous":4.7222,"previous_year":2023},"gdp_growth":{"value":1.1146,"year":2025},"inflation":{"value":3.2055,"year":2025},"unemployment":{"value":32.391,"year":2025},"lending_rate":{"value":10.6875,"year":2025},"bank_capital":{"value":7.8138,"year":2024},"private_credit":{"value":89.4476,"year":2024}},
+    "SAU": {"name":"Saudi Arabia","short_name":"Saudi Arabia","map_x":58,"map_y":49,"npl":{"value":1.0378,"year":2025,"previous":1.2454,"previous_year":2024},"gdp_growth":{"value":4.5025,"year":2025},"inflation":{"value":2.0842,"year":2025},"unemployment":{"value":3.038,"year":2025},"lending_rate":{"value":null,"year":null},"bank_capital":{"value":13.8606,"year":2025},"private_credit":{"value":null,"year":null}},
+    "ARE": {"name":"United Arab Emirates","short_name":"UAE","map_x":61,"map_y":50,"npl":{"value":4.1372,"year":2024,"previous":5.3083,"previous_year":2023},"gdp_growth":{"value":3.9918,"year":2024},"inflation":{"value":1.2509,"year":2025},"unemployment":{"value":2.174,"year":2025},"lending_rate":{"value":null,"year":null},"bank_capital":{"value":11.278,"year":2024},"private_credit":{"value":65.4574,"year":2022}},
+    "SGP": {"name":"Singapore","short_name":"Singapore","map_x":76,"map_y":61,"npl":{"value":null,"year":null,"previous":null,"previous_year":null},"gdp_growth":{"value":5.0259,"year":2025},"inflation":{"value":0.903,"year":2025},"unemployment":{"value":2.818,"year":2025},"lending_rate":{"value":5.25,"year":2021},"bank_capital":{"value":null,"year":null},"private_credit":{"value":128.4329,"year":2020}},
+    "WLD": {"name":"Global","short_name":"Global","map_x":50,"map_y":50,"npl":{"value":null,"year":null,"previous":null,"previous_year":null},"gdp_growth":{"value":2.9213,"year":2025},"inflation":{"value":3.0414,"year":2025},"unemployment":{"value":4.7913,"year":2025},"lending_rate":{"value":null,"year":null},"bank_capital":{"value":null,"year":null},"private_credit":{"value":null,"year":null}}
+  },
+  "credit_context": {
+    "global_bank_loans_deposits": {
+      "value": 80.4421,
+      "unit": "trillion USD",
+      "period": "2026 Q1",
+      "label": "Loans and deposits reported by internationally active banks",
+      "source": "Bank for International Settlements consolidated banking statistics",
+      "url": "https://data.bis.org/topics/CBS/tables-and-dashboards/BIS,CBS_B1,1.0"
+    },
+    "global_credit_loss_data_gap": {
+      "label": "No single comparable worldwide default-loss total",
+      "source": "BIS Working Paper 1101: Insights into credit loss rates",
+      "url": "https://www.bis.org/publications/working-paper-1101-insights-credit-loss-rates-global-database"
+    }
+  },
+  "indicators": {
+    "npl": {"label": "Bank non-performing loans", "code": "FB.AST.NPER.ZS", "url": "https://data.worldbank.org/indicator/FB.AST.NPER.ZS"},
+    "gdp_growth": {"label": "GDP growth", "code": "NY.GDP.MKTP.KD.ZG", "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG"},
+    "inflation": {"label": "Inflation, consumer prices", "code": "FP.CPI.TOTL.ZG", "url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG"},
+    "unemployment": {"label": "Unemployment, modeled ILO estimate", "code": "SL.UEM.TOTL.ZS", "url": "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS"},
+    "lending_rate": {"label": "Lending interest rate", "code": "FR.INR.LEND", "url": "https://data.worldbank.org/indicator/FR.INR.LEND"},
+    "bank_capital": {"label": "Bank capital to assets", "code": "FB.BNK.CAPA.ZS", "url": "https://data.worldbank.org/indicator/FB.BNK.CAPA.ZS"},
+    "private_credit": {"label": "Private-sector credit", "code": "FS.AST.PRVT.GD.ZS", "url": "https://data.worldbank.org/indicator/FS.AST.PRVT.GD.ZS"}
+  },
+  "method_note": "Static World Bank snapshot. Each card shows its own latest available year; years differ because reporting schedules differ. NPL data are sourced by the World Bank from IMF Financial Soundness Indicators. Missing values are not estimated."
+}
