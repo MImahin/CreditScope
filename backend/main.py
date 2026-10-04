@@ -406,7 +406,8 @@ app.mount('/assets/eda',StaticFiles(directory=ROOT/'data/eda'),name='eda-assets'
 app.mount('/static',StaticFiles(directory=ROOT/'frontend'),name='static')
 
 @app.get('/')
-def index(): return FileResponse(ROOT/'frontend/index.html')
+def index():
+    return FileResponse(ROOT/'frontend/index.html',headers={'Cache-Control':'no-store'})
 
 @app.get('/docs',include_in_schema=False)
 def api_docs(): return FileResponse(ROOT/'frontend/docs.html')
