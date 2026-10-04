@@ -71,58 +71,91 @@ GEMINI_MODEL=gemini-3.5-flash-lite
 
 Restart CreditScope. The AI Assistant presents separate **Local assistant** and **Gemini assistant** cards; each keeps its own browser-memory chat history. General chat sends aggregate project context. When **Ask this applicant** is active, the selected applicant details and verified model score are also sent to Gemini. Use **Clear case** to remove the selected context.
 
-## Upload your models
+## Deploy trained models
 
-Use **Deploy model** and select the format. A successful upload must pass an actual inference test before it becomes selectable. Upload only your own or trusted artifacts: joblib/pickle deserialization can execute code. The default application binds only to localhost.
+Open **Deploy model** in the sidebar. A model is added only after CreditScope loads the submitted files and successfully scores a reference applicant. Upload only files you created or trust: loading serialized joblib and pickle files can execute code.
 
-### Original MLP
+### What each upload field means
 
-- Name: `MLP`
-- Format: Scikit-learn
-- Model: `home-credit-default-risk/model/mlp/mlp_pipeline.joblib`
-- Metadata: the `metadata.json` in that same folder
-- Separate preprocessing/feature files: not required; the pipeline and metadata include them
+| Screen field | What to provide |
+| --- | --- |
+| **Model name** | Any clear display name, such as `MLP + SMOTE` or `LightGBM`. |
+| **Model format** | The runtime matching the artifact. The exact choices for the supplied packages are listed below. |
+| **Trained model file** | The main `.pkl`, `.joblib`, `.pt`, `.pth`, `.txt`, `.cbm`, `.h5`, or `.keras` artifact. |
+| **Metadata JSON** | A JSON object containing a classification `threshold` between 0 and 1 and either `feature_columns` or `feature_order`. The supplied `metadata.json` files already contain these values. |
+| **Preprocessor** | The fitted `.pkl` or `.joblib` scaler/imputer when it is stored separately. It is mandatory for PyTorch DCN and TorchScript uploads. |
+| **Feature columns** | An ordered JSON list of training feature names. Upload `feature_columns.json` when supplied; it overrides the feature list in metadata. |
+| **CatBoost categorical columns** | An ordered JSON list naming CatBoost's native categorical features. Leave blank for every format except CatBoost. |
+| **Trusted-files checkbox** | Must be checked before deployment. |
 
-The original threshold is **0.6544190978641563**, not an arbitrary 0.5.
+Click **Validate & deploy**. A successful model immediately appears in **Individual prediction** and **Batch CSV check**. A rejected upload remains unavailable and the error explains the mismatched file, feature order, preprocessor, or output.
 
-### Original Deep & Cross Network
+### Exact choices for `Main project/model`
 
-- Name: `DCN`
-- Format: PyTorch DCN
-- Model: `home-credit-default-risk/model/dcn/credit_dcn.pth`
-- Preprocessor: `preprocessor.joblib` from the same folder
-- Metadata: optional, because this checkpoint contains the ordered features and threshold
+Use files from one folder on each deployment. Do not mix preprocessors or feature lists between folders.
 
-The exact notebook architecture is implemented in `backend/dcn.py`; unrelated PyTorch architectures are not accepted. The threshold is read from the uploaded checkpoint.
+| Folder | Model name suggestion | Select **Model format** | **Trained model file** | **Metadata JSON** | **Preprocessor** | **Feature columns** | **CatBoost categorical columns** |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `dcn` | `DCN` | **PyTorch TorchScript · pt** | `model.pt` | `metadata.json` | `preprocessor.pkl` | `feature_columns.json` | Leave blank |
+| `dcn_smote` | `DCN + SMOTE` | **Scikit-learn · joblib / pkl** | `model.pkl` | `metadata.json` | `preprocessor.pkl` | `feature_columns.json` | Leave blank |
+| `mlp_smote` | `MLP + SMOTE` | **Scikit-learn · joblib / pkl** | `model.pkl` | `metadata.json` | `preprocessor.pkl` | `feature_columns.json` | Leave blank |
+| `logistic_regression_smote` | `Logistic Regression + SMOTE` | **Scikit-learn · joblib / pkl** | `model.pkl` | `metadata.json` | `preprocessor.pkl` | `feature_columns.json` | Leave blank |
+| `lightgbm` | `LightGBM` | **LightGBM · txt** | `model.txt` | `metadata.json` | Leave blank | `feature_columns.json` | Leave blank |
+| `catboost` | `CatBoost` | **CatBoost · cbm** | `model.cbm` | `metadata.json` | Leave blank | `feature_columns.json` | `categorical_features.json` |
 
-### SMOTE-trained models
+Files that are present only as alternative exports are not needed by this upload form:
 
-SMOTE is applied during training only. Save the fitted estimator and fitted scaler with the exact selected feature names in metadata. The notebook’s SMOTE experiments use **40 selected features**, while the saved MLP and true DCN use 107. Both are supported by specifying the correct ordered subset.
+- For `lightgbm`, use `model.txt`; do not upload `model.pkl`.
+- For `catboost`, use `model.cbm`; do not upload `model.pkl` or `categorical_feature_indices.json`.
+- `dcn_smote` is a scikit-learn neural-network experiment trained with SMOTE. It is not the PyTorch DCN architecture, so select **Scikit-learn**, not **PyTorch DCN checkpoint** or **TorchScript**.
+- SMOTE is used during training only. CreditScope never applies SMOTE to a new applicant during prediction.
 
-The experiment named “DCN + SMOTE” in the notebook is a deeper scikit-learn MLP, **not** the PyTorch Deep & Cross Network. Upload that experiment as Scikit-learn.
+The supplied DCN, LightGBM, and full numeric packages use 107 ordered features. The three supplied SMOTE packages use their saved 40-feature subsets. CatBoost uses 103 ordered features, including its declared native categorical columns.
 
-`scripts/export_smote_models.py` contains a helper to run in the notebook after the relevant models have been trained. It does not train or alter the models.
+### Original notebook MLP and DCN artifacts
 
-### Notebook deployment packages in `Main project/model`
+These older artifacts use different selections from the packaged folders above:
 
-All six package folders passed a sample inference check. Upload files from one folder together:
-
-| Folder | Format | Model file | Additional file |
+| Model | Select **Model format** | **Trained model file** | Other files |
 | --- | --- | --- | --- |
-| `dcn` | PyTorch TorchScript | `model.pt` | `preprocessor.pkl` |
-| `dcn_smote`, `mlp_smote`, `logistic_regression_smote` | Scikit-learn | `model.pkl` | `preprocessor.pkl` |
-| `lightgbm` | LightGBM | `model.txt` | none |
-| `catboost` | CatBoost | `model.cbm` | `categorical_features.json` |
+| Original MLP | **Scikit-learn · joblib / pkl** | `home-credit-default-risk/model/mlp/mlp_pipeline.joblib` | Upload its `metadata.json`. A separate preprocessor is unnecessary because the pipeline contains preprocessing. Its saved threshold is `0.6544190978641563`. |
+| Original DCN checkpoint | **PyTorch DCN checkpoint · pth / pt** | `home-credit-default-risk/model/dcn/credit_dcn.pth` | Upload `preprocessor.joblib`. Metadata is optional only when the checkpoint itself contains both the exact `feature_columns` and `threshold`. |
 
-Each folder also provides `metadata.json` and `feature_columns.json`. Upload both. The app handles the two known LightGBM feature name variants and CatBoost's native categorical columns.
+The **PyTorch DCN checkpoint** option accepts the specific architecture implemented in `backend/dcn.py`. Use **PyTorch TorchScript** for an exported `model.pt` such as `Main project/model/dcn/model.pt`.
 
-### Other sklearn / Keras models
+### Deploying another scikit-learn model
 
-Download the metadata template from the UI and edit it. Metadata requires `feature_columns` or `feature_order`, plus `threshold`. Numeric models must use supported project features; CatBoost models must declare their categorical columns.
+A scikit-learn classifier must provide `predict_proba`, use binary classes `[0, 1]`, and preserve the exact training feature order.
 
-Scikit-learn pipelines should contain all fitted preprocessing. Bare estimators require a separate fitted preprocessor, unless metadata explicitly states `preprocessing: "none"` because training used unscaled project numeric features. Provide classifiers with classes `[0, 1]` and `predict_proba`.
+- A fitted pipeline containing preprocessing can be uploaded without a separate preprocessor.
+- A bare fitted estimator normally requires its fitted preprocessor as a separate `.pkl` or `.joblib` file.
+- If a bare estimator was intentionally trained on unscaled CreditScope numeric features, set `"preprocessing": "none"` in metadata.
+- Metadata must include a valid threshold and feature list. You can download a starter metadata template from the **Deploy model** page.
 
-Keras support requires `.venv\Scripts\python.exe -m pip install -r requirements-keras.txt`, followed by a restart. Upload a full `.keras`/`.h5` model and its preprocessing. Weight-only H5 files and custom layers are not supported without an adapter. Keras inference was not exercised because no Keras artifact was supplied.
+`scripts/export_smote_models.py` can package trained notebook SMOTE estimators. It does not train models or apply resampling during inference.
+
+### Deploying a Keras model
+
+Install the optional TensorFlow runtime and restart CreditScope:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-keras.txt
+```
+
+Then select **Keras · h5 / keras** and upload a complete `.keras` or `.h5` model, metadata, the ordered feature list, and its fitted preprocessor when preprocessing is external. Weight-only H5 files and models requiring unavailable custom layers are not supported without a custom adapter.
+
+### Common deployment errors
+
+| Error | Resolution |
+| --- | --- |
+| `File extension does not match the chosen model type` | Choose the table's exact format for the selected artifact. |
+| `Provide an ordered feature_columns array` | Upload `feature_columns.json`, or include `feature_columns`/`feature_order` in metadata. |
+| `Provide a classification threshold between 0 and 1` | Add `threshold` to metadata. Do not use 0 or 1. |
+| `DCN requires its saved preprocessor` | Upload the matching `preprocessor.pkl` or `preprocessor.joblib`. |
+| `A bare estimator requires its fitted preprocessor` | Upload the estimator's fitted preprocessor or correctly declare `"preprocessing": "none"`. |
+| `Unsupported model features` | Use the exact feature list generated for CreditScope; do not mix files from another package. |
+| `Feature order differs` or `feature count does not match` | Upload the feature list saved with that exact trained artifact. |
+| CatBoost categorical-feature error | Upload `categorical_features.json` and ensure every listed categorical name also appears in `feature_columns.json`. |
 
 ## Feature assumptions and interpretation
 
