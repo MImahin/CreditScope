@@ -59,6 +59,18 @@ Comma-, tab-, semicolon-, and pipe-separated files are detected automatically ev
 
 The batch result summary states whether named columns or the canonical headerless order was detected, how many columns matched the selected model, and how many distinct scores were produced. Use **Inspect row** to review the exact mapped values, defaults, local sensitivities, downloadable report, model comparison, and applicant-specific chat context.
 
+### Included batch test files
+
+The repository includes reusable files in `for test/`:
+
+| File | Layout | Applicants |
+| --- | --- | ---: |
+| `test01.csv` | Named 107-feature columns | 582 |
+| `test02.csv` | Headerless canonical 107-feature order | 820 |
+| `test03.csv` | Headerless canonical 107-feature order | 202 |
+
+All three files have been validated against the supplied CatBoost, DCN, DCN + SMOTE, Logistic Regression + SMOTE, MLP, and MLP + SMOTE deployments. They produce varying applicant scores and no invalid rows.
+
 ## Chatbot choices
 
 ### Free local chatbot with Ollama
@@ -191,6 +203,32 @@ Interactive API reference: **http://127.0.0.1:8000/docs**.
 Tests cover Power BI totals, filtering/empty cohorts, feature ordering and transformations, real MLP inference parity, original DCN loading, upload/removal, bad inputs, cross-origin protections, chat setup errors, and chart assets. Artifact-dependent tests are skipped when original model files are absent. Tests use temporary model registries.
 
 Main endpoints: `GET /api/config`, `GET /api/dashboard`, `GET /api/eda`, `GET/POST /api/models`, `DELETE /api/models/{id}`, `POST /api/predict`, `POST /api/batch/predict`, `POST /api/batch/detail`, `POST /api/compare`, and `POST /api/chat`.
+
+## Project documentation files
+
+The repository includes the generated Word reports and their helper scripts. Install the optional document dependency before rebuilding them:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-docs.txt
+```
+
+Build the repository-driven CreditScope documentation:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\build_project_document.py
+```
+
+Extend an existing notebook-grounded report with the implemented web-application chapters:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\extend_grounded_report.py "C:\path\to\notebook-report.docx" --output "DA_Project_Home_Credit_Complete_Report_With_Web_Application.docx"
+```
+
+Apply repeated table headers and image alternative text to a completed report:
+
+```powershell
+.\.venv\Scripts\python.exe scripts\finalize_report_accessibility.py input.docx output.docx
+```
 
 ## Deployment boundaries
 
