@@ -123,7 +123,7 @@ async def batch_predict(model_id:str=Form(...), file:UploadFile=File(...)):
         raise HTTPException(422,'Choose a CSV file.')
     data=await file.read(batch.MAX_BYTES+1)
     try:
-        rows=batch.parse_csv(data)
+        rows,input_mode=batch.parse_csv(data,schema()['features'])
         def score():
             import pandas as pd
             with models.LOCK:
@@ -157,7 +157,7 @@ async def batch_predict(model_id:str=Form(...), file:UploadFile=File(...)):
                 batch_id=batch.remember(model_id,rows)
                 return {'batch_id':batch_id,'model_id':model_id,'model_name':meta['name'],'threshold':meta['threshold'],
                         'total_rows':len(rows),'results':valid,'errors':errors,
-                        'input_columns':len(rows[0]),'recognized_columns':len(recognized),
+                        'input_columns':len(rows[0]),'input_mode':input_mode,'recognized_columns':len(recognized),
                         'matched_model_columns':len(matched_model_columns),'unique_scores':unique_scores,
                         'caveat':'Scores are model outputs, not calibrated real-world default rates. Missing features use training defaults.'}
         return await asyncio.to_thread(score)

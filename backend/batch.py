@@ -35,7 +35,7 @@ def selected(batch_id, row_number):
         return item['model_id'],item['rows'][row_number-1]
 
 
-def parse_csv(data: bytes):
+def parse_csv(data: bytes, headerless_columns=None):
     if len(data) > MAX_BYTES:
         raise ValueError('CSV exceeds 60 MB. Split very large files into smaller batches.')
     try:
@@ -47,19 +47,35 @@ def parse_csv(data: bytes):
     except csv.Error:
         # Normal CSV is the safest fallback for very small or single-row files.
         dialect = csv.excel
-    reader = csv.DictReader(StringIO(text, newline=''), dialect=dialect)
-    original = reader.fieldnames or []
-    fieldnames = [str(name).strip() for name in original if name is not None]
-    if not fieldnames or len(fieldnames) != len(original) or len(set(fieldnames)) != len(fieldnames):
-        raise ValueError('CSV needs unique column headers.')
-    rows = []
-    for parsed in reader:
-        if None in parsed:
-            raise ValueError('CSV rows contain more values than the header. Check the delimiter and quoting.')
-        rows.append({clean: parsed.get(raw) for raw,clean in zip(original,fieldnames)})
+    parsed_rows=[row for row in csv.reader(StringIO(text,newline=''),dialect=dialect)
+                 if any(str(value).strip() for value in row)]
+    if not parsed_rows: raise ValueError('CSV contains no applicants.')
+    width=len(parsed_rows[0])
+    if any(len(row)!=width for row in parsed_rows):
+        raise ValueError('CSV rows have different numbers of values. Check the delimiter and quoting.')
+    def numeric_or_blank(value):
+        if not str(value).strip(): return True
+        try: return math.isfinite(float(value))
+        except (ValueError,TypeError): return False
+    headerless=bool(headerless_columns) and all(numeric_or_blank(value) for value in parsed_rows[0])
+    if headerless:
+        if width!=len(headerless_columns):
+            raise ValueError(f'Headerless files must contain exactly {len(headerless_columns)} values per row '
+                             f'in CreditScope feature order; detected {width}. Add column headers for another layout.')
+        fieldnames=list(headerless_columns)
+        data_rows=parsed_rows
+        input_mode='creditscope_107_feature_order'
+    else:
+        original=parsed_rows[0]
+        fieldnames=[str(name).strip() for name in original]
+        if not fieldnames or any(not name for name in fieldnames) or len(set(fieldnames))!=len(fieldnames):
+            raise ValueError('CSV needs unique column headers.')
+        data_rows=parsed_rows[1:]
+        input_mode='named_columns'
+    rows=[dict(zip(fieldnames,row)) for row in data_rows]
     if not rows: raise ValueError('CSV contains no applicants.')
     if len(rows) > MAX_ROWS: raise ValueError(f'CSV contains {len(rows):,} applicants; maximum is {MAX_ROWS:,} per batch.')
-    return rows
+    return rows,input_mode
 
 
 def recognized_columns(row, features):

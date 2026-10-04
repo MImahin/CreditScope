@@ -46,6 +46,17 @@ The repository includes the current imported data snapshot; `data/applicants.pkl
 
 Imported data is a local snapshot, not a live connection to Power BI. Filters recalculate against that snapshot. To reflect new source data, rerun the importer and restart the app. Original amount units are preserved; no BDT/USD conversion is inferred.
 
+## Batch CSV formats
+
+**Batch CSV check** accepts up to 50,000 applicants in either of these layouts:
+
+1. A file with unique column headers. Headers may use the 12 manual-input names, Home Credit source names, or names from the selected model's feature list. Missing model inputs use saved training defaults.
+2. A headerless numeric matrix containing exactly 107 values per row in the canonical order stored in `data/schema.json`. CreditScope maps those values to named features before selecting the 107 or 40 columns required by the chosen model.
+
+Comma-, tab-, semicolon-, and pipe-separated files are detected automatically even when the filename ends in `.csv`. A headerless file with any width other than 107 is rejected because its column meaning cannot be determined safely; add explicit headers for a different layout.
+
+The batch result summary states whether named columns or the canonical headerless order was detected, how many columns matched the selected model, and how many distinct scores were produced. Use **Inspect row** to review the exact mapped values, defaults, local sensitivities, downloadable report, model comparison, and applicant-specific chat context.
+
 ## Chatbot choices
 
 ### Free local chatbot with Ollama

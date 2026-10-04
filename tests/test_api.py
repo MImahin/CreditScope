@@ -222,6 +222,41 @@ def test_tab_separated_csv_named_csv_uses_each_applicant_values(client):
 
 
 @pytest.mark.skipif(not SOURCE.exists(),reason='Original artifacts unavailable')
+def test_headerless_107_feature_matrix_preserves_every_applicant(client):
+    deployed=upload_mlp(client)
+    assert deployed.status_code==201,deployed.text
+    model=deployed.json()
+    cases=[
+        Applicant(age=27,income=90000,credit=800000,external_score_2=.05,external_score_3=.08),
+        Applicant(age=58,income=450000,credit=150000,external_score_2=.92,external_score_3=.88),
+    ]
+    output=StringIO(newline='')
+    writer=csv.writer(output,delimiter='\t')
+    for case in cases:
+        frame,_=models.make_model_features(case,model['feature_columns'])
+        writer.writerow(frame.iloc[0].tolist())
+    response=client.post('/api/batch/predict',data={'model_id':model['id']},
+                         files={'file':('headerless.csv',output.getvalue().encode())})
+    assert response.status_code==200,response.text
+    body=response.json()
+    assert body['input_mode']=='creditscope_107_feature_order'
+    assert body['total_rows']==2
+    assert body['input_columns']==107
+    assert body['matched_model_columns']==107
+    assert body['unique_scores']==2
+    assert body['results'][0]['probability'] != pytest.approx(body['results'][1]['probability'])
+    detail=client.post('/api/batch/detail',json={'batch_id':body['batch_id'],'row':1})
+    assert detail.status_code==200,detail.text
+    assert detail.json()['probability']==pytest.approx(body['results'][0]['probability'])
+
+
+def test_headerless_matrix_rejects_unknown_width():
+    from backend import batch
+    with pytest.raises(ValueError,match=r'exactly 3 values per row.*detected 2'):
+        batch.parse_csv(b'1\t2\n3\t4\n',['A','B','C'])
+
+
+@pytest.mark.skipif(not SOURCE.exists(),reason='Original artifacts unavailable')
 def test_both_assistants_receive_individual_prediction_context(client,monkeypatch):
     import importlib
     main_module=importlib.import_module('backend.main')
