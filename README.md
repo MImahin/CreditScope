@@ -16,6 +16,8 @@ The application has seven sections:
 - **AI assistant:** switch between Ollama and Gemini. After scoring a case, **Ask this applicant** supplies its verified score, feature evidence, and a historical peer cohort to either assistant. Assistant Markdown is rendered safely.
 - **Deploy model:** trusted model upload, input-schema validation, inference smoke test, immediate prediction availability, and removal with a recoverable local archive.
 
+Use the **Night** button in the top bar to switch between light and night modes. The selected theme is saved in that browser and restored the next time CreditScope opens. On a new browser, CreditScope initially follows the operating system's color preference.
+
 Models appear after you deploy their saved artifacts. Notebook packages are validated during upload and can then be chosen for individual or CSV prediction.
 
 ## Clone and run on another computer

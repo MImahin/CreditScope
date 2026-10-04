@@ -154,7 +154,10 @@ def test_chat_missing_key_and_eda(client):
     assert sum(p.get('group')=='Confusion matrices' for p in eda['plots'])==12
     for p in eda['plots']:
         assert client.get(p['url']).status_code==200
-    assert client.get('/').status_code==200
+    page=client.get('/')
+    assert page.status_code==200
+    assert 'id="theme-toggle"' in page.text
+    assert 'creditscope-theme' in page.text
 
 @pytest.mark.skipif(not SOURCE.exists(),reason='Original artifacts unavailable')
 def test_csv_batch_and_selected_applicant_context(client):

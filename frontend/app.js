@@ -14,6 +14,18 @@ function robinsonPoint(code){const [lat,lon]=COUNTRY_COORDS[code];const absolute
 const state = {config:null,models:[],filters:{},dashboard:null,eda:null,edaTab:'all',edaModelGroup:'all',search:'',applicant:null,result:null,batch:null,selectedCase:null,selectedLabel:'',assistant:'ollama',messages:{ollama:[],gemini:[]},busyChat:false,adminToken:'',routeVersion:0,dashboardVersion:0,caseVersion:0,globalCountry:'BGD',lgd:.4};
 let toastTimer;
 function toast(message){$('#toast').textContent=message;$('#toast').style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').style.display='none',4500);}
+function setTheme(theme,persist=true){
+  const dark=theme==='dark';document.documentElement.dataset.theme=dark?'dark':'light';
+  if(persist){try{localStorage.setItem('creditscope-theme',dark?'dark':'light');}catch(_){}}
+  const button=$('#theme-toggle');if(!button)return;
+  button.setAttribute('aria-pressed',String(dark));button.setAttribute('aria-label',dark?'Switch to light mode':'Switch to night mode');
+  $('.theme-icon',button).textContent=dark?'☀':'☾';$('.theme-label',button).textContent=dark?'Light':'Night';
+}
+function bindThemeToggle(){
+  const button=$('#theme-toggle');if(!button)return;
+  setTheme(document.documentElement.dataset.theme==='dark'?'dark':'light',false);
+  button.onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+}
 async function api(path, options={}){
   const response=await fetch('/api'+path,{...options,headers:{...(options.body && !(options.body instanceof FormData)?{'Content-Type':'application/json'}:{}),...(state.adminToken?{'X-Admin-Token':state.adminToken}:{}),...options.headers}});
   const data=await response.json();
@@ -337,6 +349,7 @@ async function navigate(){
   window.scrollTo({top:0});
 }
 $('.dialog-close').onclick=()=>$('#plot-dialog').close();$('[data-close]').onclick=()=>$('#delete-dialog').close();$('.metric-dialog-close').onclick=()=>$('#metric-dialog').close();
+bindThemeToggle();
 async function start(){
   try{state.config=await api('/config');await refreshModels();await navigate();window.addEventListener('hashchange',navigate);}
   catch(e){$('#main').innerHTML=`<div class="error-box">Unable to open CreditScope: ${esc(e.message)}. Ensure the project import has completed.</div><button class="secondary" id="reload-app">Retry</button>`;$('#reload-app').onclick=()=>location.reload();}

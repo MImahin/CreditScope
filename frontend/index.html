@@ -5,8 +5,9 @@
   <meta name="description" content="CreditScope: explore credit risk, understand model predictions, and manage your research models.">
   <title>CreditScope · Credit risk intelligence</title>
   <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/static/styles.css">
-  <script src="/static/app.js?v=20261005-headerless-batch" defer></script>
+  <script>try{const saved=localStorage.getItem('creditscope-theme');document.documentElement.dataset.theme=saved||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');}catch(_){document.documentElement.dataset.theme='light';}</script>
+  <link rel="stylesheet" href="/static/styles.css?v=20261005-night-mode">
+  <script src="/static/app.js?v=20261005-night-mode" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -23,10 +24,10 @@
   </nav>
   <div class="nav-label">MODEL OPERATIONS</div>
   <nav aria-label="Model navigation"><a href="#models" data-page="models"><span class="nav-icon">⬡</span>Deploy model<span id="model-count" class="nav-count">0</span></a></nav>
-  <div class="sidebar-bottom"><div class="dataset-icon">◈</div><b>Home Credit research</b><p>From exploration to explanation.</p><div class="sidebar-rule"></div><span class="status-dot"></span> Local research workspace<small>CreditScope · v1.0.1</small></div>
+  <div class="sidebar-bottom"><div class="dataset-icon">◈</div><b>Home Credit research</b><p>From exploration to explanation.</p><div class="sidebar-rule"></div><span class="status-dot"></span> Local research workspace<small>CreditScope · v1.1</small></div>
 </aside>
 <div class="workspace">
-  <header class="topbar"><div><span class="muted">Workspace</span><span class="slash">/</span><span id="breadcrumb">Executive overview</span></div><div class="top-right"><span class="data-badge">Original project data</span><span class="avatar">CS</span></div></header>
+  <header class="topbar"><div><span class="muted">Workspace</span><span class="slash">/</span><span id="breadcrumb">Executive overview</span></div><div class="top-right"><button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to night mode"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Night</span></button><span class="data-badge">Original project data</span><span class="avatar">CS</span></div></header>
   <main id="main" tabindex="-1"><div class="loading">Loading your CreditScope workspace…</div></main>
   <footer>CreditScope <span>Research scores support analysis. They are not lending decisions.</span><a href="/docs" target="_blank" rel="noopener">API documentation ↗</a></footer>
 </div>
